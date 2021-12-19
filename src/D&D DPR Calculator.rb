@@ -45,6 +45,7 @@ class DPR
     @H = 1.0-((@M - @A)/20.0)
     puts "#{@H}" 
   end
+  
 end
 
 
@@ -59,6 +60,6 @@ if binanry == true
   print TTY::Box.frame "Brilliant, lets generate you a character profile right away. \nFor the following steps please refer to your D&D character who's \nDPR you would like to calculate. \n",  padding: 3, align: :center
 
   dpr = DPR.new
-  dpr.hit(21, 6) 
+  dpr.hit() 
   
 end
