@@ -37,6 +37,20 @@ class DPR
     # The lowest number needed to crit
     @C=0
   end
+  def dice(value, number)
+    # type of dice, defaul d4
+    @D=value
+    # number of dice
+    @N=number
+    # number range
+    @R=(1..@D).to_a
+    # works out sum of array
+    sum=@R.sum
+    p sum
+    # calculates average value for dice
+    dice=(sum.to_f/@R.length)*@N
+    p dice
+  end
   def crit(crit)
     # The lowest number needed to crit
     @C=crit
@@ -73,7 +87,7 @@ class DPR
   end
   def hit_adv(dc, attack)
     # chance of succeding the attack/save
-    @H = 0.0
+    @HA = 0.0
     # attack bonus
     @A=0
     # target AC
@@ -82,12 +96,12 @@ class DPR
     @M=dc
     @A=attack
     # calculate chance to hit
-    @H = 1.0-((@M - @A)/20.0)**2
-    puts " hit chance with advantage#{@H.round(2)}" 
+    @HA = 1.0-((@M - @A)/20.0)**2
+    puts " hit chance with advantage#{@HA.round(2)}" 
   end
   def hit_dis(dc, attack)
     # chance of succeding the attack/save
-    @H = 0.0
+    @HD = 0.0
     # attack bonus
     @A=0
     # target AC
@@ -96,11 +110,23 @@ class DPR
     @M=dc
     @A=attack
     # calculate chance to hit
-    @H = ((20 - @M + @A)/20.0)**2
-    puts " hit chance with disadvantage#{@H.round(2)}" 
+    @HD = ((20 - @M + @A)/20.0)**2
+    puts " hit chance with disadvantage#{@HD.round(2)}" 
+  end
+  def crit_adv(crit)
+    # class crit method and assings to @P variable
+    @P= crit(crit)
+    # calculates how advantage affects crit chance
+    @CA = 1-(1-@P)**2
+    p @CA.round(2)
+  end
+  def crit_dis(crit)
+    @P= crit(crit)
+    @CD= @P**2
+    p @CD.round(2)
   end
 end
-
+dpr = DPR.new
 
 print TTY::Box.frame "Hello! and welcome to Will Swan's \nDungeons And Dragons (D&D), Damage Per Round (DPR), Calculator.\nThis calculator assumes you have an existing D&D character.\nIf you do not please go make one before returning.", padding: 3, align: :center
 continue
@@ -112,10 +138,12 @@ if binanry == true
   $cmd.run("clear")
   print TTY::Box.frame "Brilliant, lets generate you a character profile right away. \nFor the following steps please refer to your D&D character who's \nDPR you would like to calculate. \n",  padding: 3, align: :center
 
-  dpr = DPR.new
   dpr.hit(16, 5) 
   dpr.hit_adv(16, 5)
   dpr.hit_dis(16, 5)
   dpr.crit(20)  
   dpr.crit(18)
+  dpr.crit_adv(18)
+  dpr.crit_dis(18)
+  dpr.dice(10,4)
 end
