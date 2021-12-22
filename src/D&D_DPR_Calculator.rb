@@ -1,13 +1,12 @@
+#!/usr/bin/env ruby
 # Imports installed gems
 require "tty-prompt"
 prompt = TTY::Prompt.new
-require "tty-file"
-file = TTY::File
 require "tty-box"
-box_example= TTY::Box.frame "Drawing a box in", "terminal emulator", padding: 3, align: :center
 require "tty-command"
 $cmd = TTY::Command.new(printer: :quiet)
 require 'io/console' 
+require 'bundler/setup'
 
 def continue
   print "press any key to continue"
@@ -157,35 +156,19 @@ if type == "Making attack rolls"
   attacks.each do |a|
     adv = prompt.select(box("Does attack #{a} have; 
       Advantage, Disadvantage or neither?"), %w(Advantage Disadvantage Neighter))
-    if adv == "Advantage"
-      attack = prompt.ask(box("For attack number #{a};
-        What is your Attack Bonus? This normally includes;
-        Your Strength or Dexterity Modifier,
-        Proficiency Bonus,
-        And any Magic Items Bonuses(such as +1 to attach rolls)"), default: 3+2, convert: :int)
-      dc = prompt.ask(box("What is the expected Armour Class
-        attack bumber #{a} is being made against?
-        The default assumption is 16"), default: 16, convert: :int)
-      hit=dpr.hit_adv(dc, attack)
-    elsif adv == "Disadvantage"
-      attack = prompt.ask(box("For attack number #{a};
-        What is your Attack Bonus? This normally includes;
-        Your Strength or Dexterity Modifier,
-        Proficiency Bonus,
-        And any Magic Items Bonuses(such as +1 to attach rolls)"), default: 3+2, convert: :int)
-      dc = prompt.ask(box("What is the expected Armour Class
-        attack bumber #{a} is being made against?
-        The default assumption is 16"), default: 16, convert: :int)
-      hit=dpr.hit_dis(dc, attack)
-    elsif adv == "Neighter"
-      attack = prompt.ask(box("For attack number #{a};
+    attack = prompt.ask(box("For attack number #{a};
       What is your Attack Bonus? This normally includes;
       Your Strength or Dexterity Modifier,
       Proficiency Bonus,
       And any Magic Items Bonuses(such as +1 to attach rolls)"), default: 3+2, convert: :int)
-      dc = prompt.ask(box("What is the expected Armour Class
+    dc = prompt.ask(box("What is the expected Armour Class
       attack bumber #{a} is being made against?
       The default assumption is 16"), default: 16, convert: :int)
+    if adv == "Advantage"
+      hit=dpr.hit_adv(dc, attack)
+    elsif adv == "Disadvantage"
+      hit=dpr.hit_dis(dc, attack)
+    elsif adv == "Neighter"
       hit=dpr.hit(dc, attack)
     end
     continue
@@ -215,18 +198,14 @@ if type == "Making attack rolls"
     continue
     box("Now Lets work out your crit chance")
     continue
+    crit=prompt.ask(box("What is the minimum number needed for attack
+      number #{a} to count as a critical hit?"), default: 20, convert: :int)
     p adv
     if adv == "Advantage"
-      crit=prompt.ask(box("What is the minimum number needed for attack
-        number #{a} to count as a critical hit?"), default: 20, convert: :int)
       crit_chance=dpr.crit_adv(crit)
     elsif adv == "Disadvantage"
-      crit=prompt.ask(box("What is the minimum number needed for attack
-        number #{a} to count as a critical hit?"), default: 20, convert: :int)
       crit_chance=dpr.crit_dis(crit)
     else
-      crit=prompt.ask(box("What is the minimum number needed for attack
-        number #{a} to count as a critical hit?"), default: 20, convert: :int)
       crit_chance=dpr.crit(crit)
     end
     dpa=dpr.dpa(hit, damage, bonus, crit_chance)
@@ -239,17 +218,13 @@ if type == "Making attack rolls"
 else
   adv = prompt.select(box("Does the target have; 
     Advantage, Disadvantage or neither?"), %w(Advantage Disadvantage Neighter))
+  save = prompt.ask(box("What is the bonus your target has to the saving throw?"), default: 5, convert: :int)
+  dc = prompt.ask(box("What is the DC of your Spell"), default: 13, convert: :int)
   if adv == "Advantage"
-    save = prompt.ask(box("What is the bonus your target has to the saving throw?"), default: 5, convert: :int)
-    dc = prompt.ask(box("What is the DC of your Spell"), default: 13, convert: :int)
     hit=dpr.hit_adv(dc, save)
   elsif adv == "Disadvantage"
-    save = prompt.ask(box("What is the bonus your target has to the saving throw?"), default: 5, convert: :int)
-    dc = prompt.ask(box("What is the DC of your Spell"), default: 13, convert: :int)
     hit=dpr.hit_dis(dc, save)
   elsif adv == "Neighter"
-    save = prompt.ask(box("What is the bonus your target has to the saving throw?"), default: 5, convert: :int)
-    dc = prompt.ask(box("What is the DC of your Spell"), default: 13, convert: :int)
     hit=dpr.hit(dc, save)
   end
   hit = 1-hit

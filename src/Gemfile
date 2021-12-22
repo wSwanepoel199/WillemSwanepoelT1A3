@@ -5,8 +5,8 @@ source "https://rubygems.org"
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 # gem 'rails'
-gem 'tty'
-gem "tty-file"
 gem "tty-prompt"
 gem "tty-box"
 gem "tty-command"
+gem "psapi"
+gem "fiddle"
