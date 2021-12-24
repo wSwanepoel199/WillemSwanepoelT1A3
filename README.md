@@ -61,7 +61,9 @@ CD into folder containing script and Gemfile
 
 use Bundler to install gems
 > bundle
+
 or
+
 > bundle install
 
 Run script via
