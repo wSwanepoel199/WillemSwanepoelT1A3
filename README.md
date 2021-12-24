@@ -26,6 +26,8 @@ The application is simple on an input level, It provides break periods to inform
 
 Due to how the application is built errors often do not occur or it will refuse to accept inputs it can not use. However if wrong information has been entered the only fix is to kill the application and resume from the start.
 
+## *UML Diagram generated using RubyMine*
+<!-- probably not what was wanted but time constraints did not allow me to properly learn how to make one myself -->
 ![UML Diagram](https://github.com/wSwanepoel199/WillemSwanepoelT1A3/blob/main/docs/diagram.png?raw=true)
 
 ## *Planned Features*
