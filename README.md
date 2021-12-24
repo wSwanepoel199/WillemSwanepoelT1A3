@@ -2,7 +2,7 @@
 
 [GitHub Repo](https://github.com/wSwanepoel199/WillemSwanepoelT1A3)
 
-<a href="https://rpgbot.net/dnd5/characters/damage-per-round/" target="_blank">"DnD 5e – Damage Per Round"</a>, <a href="https://www.patreon.com/rpgbot" target="_blank">RPGBOT</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0" target="_blank">CC BY 4.0</a>
+<a href="https://ttytoolkit.org/" target="_blank">"TTY-Toolkit"</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0" target="_blank">CC BY 4.0</a>
 
 ## *Software Development Plan*
 
@@ -26,3 +26,4 @@ The application is simple on an input level, It provides break periods to inform
 
 Due to how the application is built errors often do not occur or it will refuse to accept inputs it can not use. However if wrong information has been entered the only fix is to kill the application and resume from the start.
 
+![Sitemap](https://github.com/wSwanepoel199/WillemSwanepoelT1A3/blob/main/docs/SiteMap.png?raw=true)
