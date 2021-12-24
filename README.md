@@ -28,9 +28,41 @@ Due to how the application is built errors often do not occur or it will refuse 
 
 ![UML Diagram](https://github.com/wSwanepoel199/WillemSwanepoelT1A3/blob/main/docs/diagram.png?raw=true)
 
-## 
+## *Planned Features*
 
 | Syntax | Description |
 | ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
+| Check | Item |
+| [x] | Impliment Class to contain DPR calculations |
+| [x] | Impliment variables to collect desired information and store it |
+| [x] | Impliment equations that utilise corret variables |
+| [x] | Impliment gem, "tty-prompt" inorder to collect user input |
+| [x] | Ensure DPR is correctly using, user input|
+| [x] | Impliment IF statements and Loops to ensure information is accuratly collected |
+| [x] | Calculate DPR based of final input which was collected via loops |
+| [x] | Display accurate DPR calculations using well known examples such as the Warlock Baseline |
+| [x] | Impliment Gem to improve user experience by surrounding prompts within boxes |
+| [x] | Impliment Gem to clean up clutter by clearing screen when moving on to new sections |
+| [x] | Impliment a Save DPR calculator along with the expected normal attack |
+
+
+## ***Help Documentation***
+
+Ensure Ruby Version 3.0.0p0 is installed
+
+Ensure RubyGem version 3.2.3 is installed
+
+Use RubyGem to install bundler version 2.2.3.
+> gem install bunlder --version 2.2.3
+
+Ensure D&D_DPR_Calculator.rb and accompanying Gemfile is in the same folder
+
+CD into folder containing script and Gemfile
+
+use Bunlder to install gems
+> bundle
+or
+>bundle install
+
+Run script via
+> ./D&D_DPR_Calculator.rb
