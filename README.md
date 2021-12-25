@@ -50,6 +50,8 @@ Due to how the application is built errors often do not occur or it will refuse 
 
 ## ***Help Documentation***
 
+Run Run.sh or follow instructions below;
+
 Ensure Ruby Version 3.0.0p0 is installed
 
 Ensure RubyGem version 3.2.3 is installed
