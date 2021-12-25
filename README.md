@@ -59,7 +59,7 @@ Ensure RubyGem version 3.2.3 is installed
 Use RubyGem to install bundler version 2.2.3.
 > gem install bundler --version 2.2.3
 
-Ensure D&D_DPR_Calculator.rb and accompanying Gemfile is in the same folder
+Ensure DandD_DPR_Calculator.rb and accompanying Gemfile is in the same folder
 
 CD into folder containing script and Gemfile
 
@@ -71,4 +71,4 @@ or
 > bundle install
 
 Run script via
-> ./D&D_DPR_Calculator.rb
+> ./DandD_DPR_Calculator.rb
